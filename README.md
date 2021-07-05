@@ -1,1 +1,1 @@
-# TouristicsPoints
+# Points

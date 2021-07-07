@@ -10,7 +10,7 @@ import Foundation
 
 class PointsViewController: UITableViewController, UISearchBarDelegate {
     
-    var pointsArray = [Places]()
+    var pointsArray = [Place]()
     
     //Codigo necesario para ver la transición de la pantalla y mostrar los detalles de cada POI
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> DetailViewController? {
@@ -30,14 +30,14 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
         searchController?.obscuresBackgroundDuringPresentation = false
         searchController?.searchBar.placeholder = "Search"
         tableView.tableHeaderView = searchController?.searchBar
-        
+    
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getPoint()
-       // getDetailPoint(withID: String)
+        //getDetailPoint(withID: String)
     }
     
     
@@ -52,7 +52,7 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(PointCell.self)", for: indexPath) as? PointCell
         else {fatalError("Could not create PointCell") }
         let point = pointsArray[indexPath.row]
-        cell.titleLabel?.text = point.list.compactMap({$0.title}).joined(separator: ",")
+        cell.titleLabel?.text = point.title
         return cell
     }
     
@@ -66,7 +66,11 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
         let task = URLSession.shared.dataTask(with: urlPOI) { data, response, error in
             if let data = data {
                 if let points = try? JSONDecoder().decode(Places.self, from: data) {
-                    self.pointsArray.append(points)
+                    self.pointsArray = points.list
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                   // print(self.pointsArray[0].list.compactMap({$0.title}))
                 } else {
                     print("Invalid Response")
                 }
@@ -74,37 +78,10 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
                 print("HTTP Request Failed \(error)")
             }
         }
-        self.tableView.reloadData()
         task.resume()
         
     }
     
-
-//    func getDetailPoint(withID: String) {
-//
-//        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/points/\(id.self)")! //Pasar ID que queremos mostrar
-//        var request = URLRequest(url: urlDetailPOI)
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        let task = URLSession.shared.dataTask(with: urlDetailPOI) { data, response, error in
-//            print(data)
-//            print(response)
-//            print(error)
-//
-//            if let data = data {
-//                if let points = try? JSONDecoder().decode(DetailPoints.self, from: data) {
-//                    print(points)
-//                } else {
-//                    print("Invalid Response")
-//                }
-//            } else if let error = error {
-//                print("HTTP Request Failed \(error)")
-//            }
-//
-//        }
-//        task.resume()
-//
-//    }
 }
 
 

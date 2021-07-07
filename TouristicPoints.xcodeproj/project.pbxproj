@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		46551DD226930CD6009FBD2F /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46551DD126930CD6009FBD2F /* PointCell.swift */; };
-		46551DD426931B90009FBD2F /* Datos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46551DD326931B90009FBD2F /* Datos.swift */; };
+		4694709626959BE1003DF39B /* PointsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4694709526959BE1003DF39B /* PointsProvider.swift */; };
 		46DC45E3268EE54300A76A48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E2268EE54300A76A48 /* AppDelegate.swift */; };
 		46DC45E5268EE54300A76A48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E4268EE54300A76A48 /* SceneDelegate.swift */; };
 		46DC45E7268EE54300A76A48 /* PointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E6268EE54300A76A48 /* PointsViewController.swift */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		46551DD126930CD6009FBD2F /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
-		46551DD326931B90009FBD2F /* Datos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datos.swift; sourceTree = "<group>"; };
+		4694709526959BE1003DF39B /* PointsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsProvider.swift; sourceTree = "<group>"; };
 		46DC45DF268EE54300A76A48 /* TouristicPoints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristicPoints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DC45E2268EE54300A76A48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46DC45E4268EE54300A76A48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 				46DC45E6268EE54300A76A48 /* PointsViewController.swift */,
 				46DC45FB268F03B700A76A48 /* DetailViewController.swift */,
 				46551DD126930CD6009FBD2F /* PointCell.swift */,
-				46551DD326931B90009FBD2F /* Datos.swift */,
+				4694709526959BE1003DF39B /* PointsProvider.swift */,
 				46DC45E8268EE54300A76A48 /* Main.storyboard */,
 				46DC45EE268EE54400A76A48 /* Assets.xcassets */,
 				46DC45F0268EE54400A76A48 /* LaunchScreen.storyboard */,
@@ -153,7 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46DC45E7268EE54300A76A48 /* PointsViewController.swift in Sources */,
-				46551DD426931B90009FBD2F /* Datos.swift in Sources */,
+				4694709626959BE1003DF39B /* PointsProvider.swift in Sources */,
 				46DC45E3268EE54300A76A48 /* AppDelegate.swift in Sources */,
 				46DC45E5268EE54300A76A48 /* SceneDelegate.swift in Sources */,
 				46551DD226930CD6009FBD2F /* PointCell.swift in Sources */,

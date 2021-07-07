@@ -20,6 +20,7 @@ class DetailViewController: UIViewController {
    
     
     let detailPoints: DetailPoints
+    let pointID: String
    
     
     override func viewDidLoad() {
@@ -44,6 +45,33 @@ class DetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("This should never be called!")
         
+    }
+    
+    
+    func getDetailPoint(withID: String) {
+
+        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/points/\(id)")! //Pasar ID que queremos mostrar
+        var request = URLRequest(url: urlDetailPOI)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let task = URLSession.shared.dataTask(with: urlDetailPOI) { data, response, error in
+            print(data)
+            print(response)
+            print(error)
+
+            if let data = data {
+                if let points = try? JSONDecoder().decode(DetailPoints.self, from: data) {
+                    print(points)
+                } else {
+                    print("Invalid Response")
+                }
+            } else if let error = error {
+                print("HTTP Request Failed \(error)")
+            }
+
+        }
+        task.resume()
+
     }
 
 }

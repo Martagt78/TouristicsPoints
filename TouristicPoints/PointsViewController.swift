@@ -16,7 +16,8 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> DetailViewController? {
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Nothing selected!!")}
         let detailPoint = dPOI.dpts[indexPath.row]
-        return DetailViewController(coder: coder, detailPoints: detailPoint)
+        let pointID = "" //Esto no se si está bien, preguntar
+        return DetailViewController(coder: coder, detailPoints: detailPoint, pointID: pointID)
     }
     
     var searchController: UISearchController?
@@ -37,14 +38,14 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getPoint()
-        //getDetailPoint(withID: String)
+        
     }
     
     
     //MARK: - DataSource -
     
+    //Método que muestra el numero de celdas que vamos a tener
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //Método que muestra el numero de celdas que vamos a tener
         return pointsArray.count
     }
     
@@ -56,7 +57,28 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
+    //Obtiene la etiqueta de la celda seleccionada
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let point = pointsArray[indexPath.row].id
+        performSegue(withIdentifier: "ID", sender: point) //inicia la secuencia con el id indicado
+        //print(point.id)
+    }
     
+    //Paso el id que he cogido antes a la var pointID en la clase DetailViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ID" {
+            guard let detailViewController = segue.destination as?
+            DetailViewController,
+                  let pointID = sender as? String else {
+                return
+            }
+            detailViewController.pointID = pointID
+        }
+    }
+    
+    
+    
+   
     func getPoint() {
         
         let urlPOI = URL(string: "http://t21services.herokuapp.com/points")!
@@ -70,7 +92,6 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
-                   // print(self.pointsArray[0].list.compactMap({$0.title}))
                 } else {
                     print("Invalid Response")
                 }

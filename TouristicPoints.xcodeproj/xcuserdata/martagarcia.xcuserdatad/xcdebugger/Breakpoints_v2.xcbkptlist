@@ -3,4 +3,70 @@
    uuid = "E37CB8C5-3C64-47AA-8B1C-E5A703A5D50A"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A62C5E5C-DBE8-4AC1-9F99-C8588647C420"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TouristicPoints/DetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "getDetailPoint(ID:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A62C5E5C-DBE8-4AC1-9F99-C8588647C420 - 72405a19aaa856c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TouristicPoints.DetailViewController.getDetailPoint(ID: Swift.String) -&gt; ()"
+                  moduleName = "TouristicPoints"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/martagarcia/Desktop/TouristicPoints/TouristicPoints/DetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1085">
+               </Location>
+               <Location
+                  uuid = "A62C5E5C-DBE8-4AC1-9F99-C8588647C420 - b2d2003b9033c710"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in TouristicPoints.DetailViewController.getDetailPoint(ID: Swift.String) -&gt; ()"
+                  moduleName = "TouristicPoints"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/martagarcia/Desktop/TouristicPoints/TouristicPoints/DetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "231">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A739D72-3FF0-4232-B653-BA43FEC47BCE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TouristicPoints/DetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "getDetailPoint(ID:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

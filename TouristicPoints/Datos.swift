@@ -9,18 +9,6 @@ import UIKit
 import Foundation
 import Combine
 
-enum POI {
-    static let pts: [Place] = [
-        Place(id: "1", title: "Casa Batlló", geocoordinates: "41.391926,2.165208"),
-        Place(id: "2", title: "Fundació Antoni Tàpies", geocoordinates: "41.39154,2.163835"),
-        Place(id: "3", title: "Hospital de Sant Pau", geocoordinates: "41.674202,2.314628"),
-        Place(id: "4", title: "La pedrera - Casa Milà", geocoordinates: "41.39558,2.162075"),
-        Place(id: "5", title: "Fundació Suñol", geocoordinates: "41.395173,2.16179"),
-       
-    ]
-
-}
-
 
 enum dPOI {
     static let dpts: [DetailPoints] = [

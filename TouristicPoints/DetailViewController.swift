@@ -20,7 +20,8 @@ class DetailViewController: UIViewController {
    
     
     let detailPoints: DetailPoints
-    let pointID: String
+    var pointID: String
+    var detailsArray = [DetailPoints]()
    
     
     override func viewDidLoad() {
@@ -37,8 +38,9 @@ class DetailViewController: UIViewController {
     
    
     
-    init?(coder: NSCoder, detailPoints: DetailPoints) {
+    init?(coder: NSCoder, detailPoints: DetailPoints, pointID: String) {
         self.detailPoints = detailPoints
+        self.pointID = pointID
         super.init(coder: coder)
     }
     
@@ -48,9 +50,9 @@ class DetailViewController: UIViewController {
     }
     
     
-    func getDetailPoint(withID: String) {
+    func getDetailPoint(ID: String) {
 
-        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/points/\(id)")! //Pasar ID que queremos mostrar
+        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/points/\(ID)")! //Pasar ID que queremos mostrar
         var request = URLRequest(url: urlDetailPOI)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
@@ -61,7 +63,8 @@ class DetailViewController: UIViewController {
 
             if let data = data {
                 if let points = try? JSONDecoder().decode(DetailPoints.self, from: data) {
-                    print(points)
+                    self.detailsArray.append(points)
+                    print(self.detailsArray)
                 } else {
                     print("Invalid Response")
                 }

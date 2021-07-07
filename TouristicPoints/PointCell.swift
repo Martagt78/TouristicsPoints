@@ -9,5 +9,6 @@ import UIKit
 
 class PointCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
+    
  
 }

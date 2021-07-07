@@ -9,25 +9,35 @@ import UIKit
 
 
 class DetailViewController: UIViewController {
-    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var idLabel: UILabel!
-    @IBOutlet var coordinatesLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var transportLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var geocoordinatesLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var phoneLabel: UILabel!
    
     
-    let points: Points
+    let detailPoints: DetailPoints
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = points.title
-        idLabel.text = "\(points.id)"
-        coordinatesLabel.text = "\(points.geocoordinates)"
+        idLabel.text = "\(detailPoints.id)"
+        titleLabel.text = detailPoints.title
+        addressLabel.text = "\(detailPoints.address)"
+        transportLabel.text = detailPoints.transport
+        emailLabel.text = detailPoints.email
+        geocoordinatesLabel.text = "\(detailPoints.geocoordinates)"
+        descriptionLabel.text = detailPoints.description
+        phoneLabel.text = detailPoints.phone
     }
     
    
     
-    init?(coder: NSCoder, points: Points) {
-        self.points = points
+    init?(coder: NSCoder, detailPoints: DetailPoints) {
+        self.detailPoints = detailPoints
         super.init(coder: coder)
     }
     

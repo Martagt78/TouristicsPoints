@@ -14,6 +14,7 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
     
     //Codigo necesario para ver la transición de la pantalla y mostrar los detalles de cada POI
     //Esto tendría que quitarlo al pasarle el id por parámetros mediante didSelectRowAt??
+    //Cambio
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> DetailViewController? {
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Nothing selected!!")}
         let detailPoint = dPOI.dpts[indexPath.row]

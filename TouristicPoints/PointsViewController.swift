@@ -52,13 +52,13 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
     //Obtiene la etiqueta de la celda seleccionada
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let point = pointsArray[indexPath.row].id
-        performSegue(withIdentifier: "ID", sender: point) //inicia la secuencia con el id indicado
-        //print(point.id)
+        performSegue(withIdentifier: "detailViewController", sender: point) //inicia la secuencia con el id indicado
+        
     }
     
     //Paso el id que he cogido antes a la var pointID en la clase DetailViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ID" {
+        if segue.identifier == "detailViewController" {
             guard let detailViewController = segue.destination as?
             DetailViewController,
                   let pointID = sender as? String else {

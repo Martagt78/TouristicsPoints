@@ -19,7 +19,7 @@ struct Place: Codable {
 }
 
 struct  DetailPoints: Codable {
-    let id: String
+    var id: String
     let title: String
     let address: String
     let transport: String

@@ -15,18 +15,17 @@ class DetailViewController: UIViewController {
     @IBOutlet var transportLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet var geocoordinatesLabel: UILabel!
-    @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var phoneLabel: UILabel!
-   
+    @IBOutlet var descriptionText: UITextView!
     
     var detailPoints: DetailPoints?
     var pointID: String = ""
-    var detailsArray = [DetailPoints]()
+
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getDetailPoint(ID: pointID)
+        getDetailPoint()
     }
     
     
@@ -36,7 +35,6 @@ class DetailViewController: UIViewController {
     }
    
     
-    
     func configureOutlets(detailPoints: DetailPoints ) {
         idLabel.text = "\(detailPoints.id)"
         titleLabel.text = detailPoints.title
@@ -44,21 +42,24 @@ class DetailViewController: UIViewController {
         transportLabel.text = detailPoints.transport
         emailLabel.text = detailPoints.email
         geocoordinatesLabel.text = "\(detailPoints.geocoordinates)"
-        descriptionLabel.text = detailPoints.description
         phoneLabel.text = detailPoints.phone
+        descriptionText.text = detailPoints.description
         
     }
     
-    func getDetailPoint(ID: String) {
-
-        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/points/\(ID)")! //Pasar ID que queremos mostrar
+    func getDetailPoint() {
+    
+        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/points/\(self.pointID)")! //Pasar ID que queremos mostrar
         var request = URLRequest(url: urlDetailPOI)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let task = URLSession.shared.dataTask(with: urlDetailPOI) { data, response, error in
             if let data = data {
-                if let points = try? JSONDecoder().decode(DetailPoints.self, from: data) {
-                    
+                if let dpoints = try? JSONDecoder().decode(DetailPoints.self, from: data) {
+                    DispatchQueue.main.async {
+                        self.configureOutlets(detailPoints: dpoints)
+                    }
+                        
                 } else {
                     print("Invalid Response")
                 }

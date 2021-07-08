@@ -19,13 +19,25 @@ class DetailViewController: UIViewController {
     @IBOutlet var phoneLabel: UILabel!
    
     
-    let detailPoints: DetailPoints
-    var pointID: String
+    var detailPoints: DetailPoints?
+    var pointID: String = ""
     var detailsArray = [DetailPoints]()
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getDetailPoint(ID: pointID)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+   
+    
+    
+    func configureOutlets(detailPoints: DetailPoints ) {
         idLabel.text = "\(detailPoints.id)"
         titleLabel.text = detailPoints.title
         addressLabel.text = "\(detailPoints.address)"
@@ -34,21 +46,8 @@ class DetailViewController: UIViewController {
         geocoordinatesLabel.text = "\(detailPoints.geocoordinates)"
         descriptionLabel.text = detailPoints.description
         phoneLabel.text = detailPoints.phone
-    }
-    
-   
-    
-    init?(coder: NSCoder, detailPoints: DetailPoints, pointID: String) {
-        self.detailPoints = detailPoints
-        self.pointID = pointID
-        super.init(coder: coder)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("This should never be called!")
         
     }
-    
     
     func getDetailPoint(ID: String) {
 
@@ -57,14 +56,9 @@ class DetailViewController: UIViewController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let task = URLSession.shared.dataTask(with: urlDetailPOI) { data, response, error in
-            print(data)
-            print(response)
-            print(error)
-
             if let data = data {
                 if let points = try? JSONDecoder().decode(DetailPoints.self, from: data) {
-                    self.detailsArray.append(points)
-                    print(self.detailsArray)
+                    
                 } else {
                     print("Invalid Response")
                 }

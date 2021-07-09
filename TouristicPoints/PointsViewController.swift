@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class PointsViewController: UITableViewController {
@@ -123,9 +124,6 @@ class PointsViewController: UITableViewController {
         task.resume()
         
     }
-    
-   
-    
     
 }
 

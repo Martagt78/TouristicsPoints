@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		46551DD226930CD6009FBD2F /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46551DD126930CD6009FBD2F /* PointCell.swift */; };
-		466E18BE2698273600957F82 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466E18BD2698273600957F82 /* Search.swift */; };
 		46DC45E3268EE54300A76A48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E2268EE54300A76A48 /* AppDelegate.swift */; };
 		46DC45E5268EE54300A76A48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E4268EE54300A76A48 /* SceneDelegate.swift */; };
 		46DC45E7268EE54300A76A48 /* PointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E6268EE54300A76A48 /* PointsViewController.swift */; };
@@ -22,7 +21,6 @@
 
 /* Begin PBXFileReference section */
 		46551DD126930CD6009FBD2F /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
-		466E18BD2698273600957F82 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		46DC45DF268EE54300A76A48 /* TouristicPoints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristicPoints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DC45E2268EE54300A76A48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46DC45E4268EE54300A76A48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		466E18BF26987DE900957F82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				46DC45EB268EE54300A76A48 /* TouristicPoints.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		46DC45D6268EE54300A76A48 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +72,7 @@
 		46DC45E1268EE54300A76A48 /* TouristicPoints */ = {
 			isa = PBXGroup;
 			children = (
+				466E18BF26987DE900957F82 /* Model */,
 				46DC45E2268EE54300A76A48 /* AppDelegate.swift */,
 				46DC45E4268EE54300A76A48 /* SceneDelegate.swift */,
 				46DC45F9268EE82A00A76A48 /* Points.swift */,
@@ -76,8 +83,6 @@
 				46DC45EE268EE54400A76A48 /* Assets.xcassets */,
 				46DC45F0268EE54400A76A48 /* LaunchScreen.storyboard */,
 				46DC45F3268EE54400A76A48 /* Info.plist */,
-				46DC45EB268EE54300A76A48 /* TouristicPoints.xcdatamodeld */,
-				466E18BD2698273600957F82 /* Search.swift */,
 			);
 			path = TouristicPoints;
 			sourceTree = "<group>";
@@ -157,7 +162,6 @@
 				46DC45E5268EE54300A76A48 /* SceneDelegate.swift in Sources */,
 				46551DD226930CD6009FBD2F /* PointCell.swift in Sources */,
 				46DC45FC268F03B700A76A48 /* DetailViewController.swift in Sources */,
-				466E18BE2698273600957F82 /* Search.swift in Sources */,
 				46DC45FA268EE82A00A76A48 /* Points.swift in Sources */,
 				46DC45ED268EE54300A76A48 /* TouristicPoints.xcdatamodeld in Sources */,
 			);

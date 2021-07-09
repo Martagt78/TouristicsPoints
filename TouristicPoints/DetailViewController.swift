@@ -9,7 +9,6 @@ import UIKit
 
 
 class DetailViewController: UIViewController {
-    @IBOutlet var idLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var transportLabel: UILabel!
@@ -36,7 +35,6 @@ class DetailViewController: UIViewController {
    
     
     func configureOutlets(detailPoints: DetailPoints ) {
-        idLabel.text = "\(detailPoints.id)"
         titleLabel.text = detailPoints.title
         addressLabel.text = "\(detailPoints.address)"
         transportLabel.text = detailPoints.transport

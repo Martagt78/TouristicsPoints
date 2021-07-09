@@ -6,24 +6,25 @@
 //
 
 import UIKit
-import Foundation
 
-class PointsViewController: UITableViewController, UISearchBarDelegate {
+
+class PointsViewController: UITableViewController {
     
     var pointsArray = [Place]()
     
-    var searchController: UISearchController?
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredpointsArray = [Place]() //array para guardar coincidencias de barra de busqueda
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Codigo para incluir la barra de busqueda
-        searchController = UISearchController(searchResultsController: nil)
-        searchController?.searchBar.delegate = self
-        searchController?.obscuresBackgroundDuringPresentation = false
-        searchController?.searchBar.placeholder = "Search"
-        tableView.tableHeaderView = searchController?.searchBar
-    
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Place"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
     }
     
     
@@ -33,18 +34,47 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
         
     }
     
+    //Devuelve true si el texto escrito en la barra está vacio
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    //Nos indica si se estan filtrando los resultados
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredpointsArray = pointsArray.filter {(point: Place) -> Bool in
+            //Al usar lowercased comparo tanto minusculas como mayúsculas, no es necesario escribir la palabra tal y como aparece
+            return point.title.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+        
+    }
+    
     
     //MARK: - DataSource -
     
     //Método que muestra el numero de celdas que vamos a tener
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pointsArray.count
+        if isFiltering {
+            return filteredpointsArray.count
+        }
+            return pointsArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(PointCell.self)", for: indexPath) as? PointCell
         else {fatalError("Could not create PointCell") }
-        let point = pointsArray[indexPath.row]
+        var point = pointsArray[indexPath.row]
+        
+        if isFiltering {
+            point = filteredpointsArray[indexPath.row]
+        } else {
+            point = pointsArray[indexPath.row]
+        }
+        
         cell.titleLabel?.text = point.title
         return cell
     }
@@ -68,8 +98,7 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    
-    
+
    
     func getPoint() {
         
@@ -94,6 +123,19 @@ class PointsViewController: UITableViewController, UISearchBarDelegate {
         task.resume()
         
     }
+    
+   
+    
+    
+}
+
+
+extension PointsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+    
     
 }
 

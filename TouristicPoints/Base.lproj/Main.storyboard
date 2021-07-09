@@ -73,23 +73,12 @@
                             <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="WoE-pU-MUV">
                                 <rect key="frame" x="87" y="104" width="240" height="742"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SmI-q2-43M">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXi-rx-7qI">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQg-VJ-k7O" userLabel="Id Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="30"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXi-rx-7qI">
-                                                <rect key="frame" x="73.5" y="0.0" width="166.5" height="30"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glW-uM-GAb" userLabel="Address Label">
                                         <rect key="frame" x="0.0" y="60" width="240" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
@@ -146,7 +135,6 @@
                         <outlet property="descriptionText" destination="hLu-td-3uh" id="Pt5-Se-IoJ"/>
                         <outlet property="emailLabel" destination="AWT-tb-8Tl" id="0Hu-ck-Z9c"/>
                         <outlet property="geocoordinatesLabel" destination="LLp-2J-yGn" id="cKe-KP-5xL"/>
-                        <outlet property="idLabel" destination="aQg-VJ-k7O" id="K1P-ds-NA0"/>
                         <outlet property="phoneLabel" destination="iD8-Ws-QSN" id="hi7-l6-tzf"/>
                         <outlet property="titleLabel" destination="QXi-rx-7qI" id="O1H-HG-a30"/>
                         <outlet property="transportLabel" destination="pam-gP-I9a" id="Gfe-O9-ouG"/>

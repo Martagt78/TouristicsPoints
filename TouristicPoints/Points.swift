@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Combine
 
 struct Places: Codable {
   var list: [Place]

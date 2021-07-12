@@ -9,13 +9,25 @@ import UIKit
 import CoreData
 
 
+
 class PointsViewController: UITableViewController {
     
     var pointsArray = [Place]()
     
     let searchController = UISearchController(searchResultsController: nil)
     var filteredpointsArray = [Place]() //array para guardar coincidencias de barra de busqueda
-
+    
+    
+    let fetchRequest = Point.basicFetchRequest()
+    //Para obtener los resultados de la fetchRequest
+    //    var point: FetchedResults<Point> {
+    //       // fetchRequest.wrappedValue
+    //
+    //    }
+    
+    var point: NSFetchedResultsController<Point>?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +44,18 @@ class PointsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getPoint()
+        
+        //Coredata
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let sort = NSSortDescriptor(key: #keyPath(Point.title), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        do {
+            point = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: delegate.persistentContainer.viewContext
+                                               , sectionNameKeyPath: nil, cacheName: nil)
+            try point?.performFetch()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
         
     }
     
@@ -62,7 +86,7 @@ class PointsViewController: UITableViewController {
         if isFiltering {
             return filteredpointsArray.count
         }
-            return pointsArray.count
+        return pointsArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,7 +115,7 @@ class PointsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailViewController" {
             guard let detailViewController = segue.destination as?
-            DetailViewController,
+                    DetailViewController,
                   let pointID = sender as? String else {
                 return
             }
@@ -99,8 +123,8 @@ class PointsViewController: UITableViewController {
         }
     }
     
-
-   
+    
+    
     func getPoint() {
         
         let urlPOI = URL(string: "http://t21services.herokuapp.com/points")!

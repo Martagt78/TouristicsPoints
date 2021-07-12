@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
 
     // MARK: - Core Data stack
-
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TouristicPoints")
         container.loadPersistentStores {(storeDescription, error) in
@@ -46,15 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     // MARK: - Core Data Saving support
-    //Configuramos la pila
     func saveContext () {
+        //obtenemos la viewContext del contenedor, guardamos los datos no guardados
         let context = persistentContainer.viewContext
-        if context.hasChanges {
+        if context.hasChanges { //Solo guardamos los datos si ha habido cambios
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }

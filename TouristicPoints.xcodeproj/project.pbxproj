@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		46551DD226930CD6009FBD2F /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46551DD126930CD6009FBD2F /* PointCell.swift */; };
+		469073BB269C140F007B7411 /* Point+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469073BA269C140F007B7411 /* Point+CoreDataClass.swift */; };
+		469073BD269C2360007B7411 /* Point+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469073BC269C2360007B7411 /* Point+CoreDataProperties.swift */; };
+		469073BF269C57AE007B7411 /* Details+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469073BE269C57AE007B7411 /* Details+CoreDataClass.swift */; };
+		469073C1269C57C1007B7411 /* Details+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469073C0269C57C1007B7411 /* Details+CoreDataProperties.swift */; };
 		46DC45E3268EE54300A76A48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E2268EE54300A76A48 /* AppDelegate.swift */; };
 		46DC45E5268EE54300A76A48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E4268EE54300A76A48 /* SceneDelegate.swift */; };
 		46DC45E7268EE54300A76A48 /* PointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E6268EE54300A76A48 /* PointsViewController.swift */; };
@@ -21,6 +25,10 @@
 
 /* Begin PBXFileReference section */
 		46551DD126930CD6009FBD2F /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
+		469073BA269C140F007B7411 /* Point+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataClass.swift"; sourceTree = "<group>"; };
+		469073BC269C2360007B7411 /* Point+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		469073BE269C57AE007B7411 /* Details+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Details+CoreDataClass.swift"; sourceTree = "<group>"; };
+		469073C0269C57C1007B7411 /* Details+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Details+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		46DC45DF268EE54300A76A48 /* TouristicPoints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristicPoints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DC45E2268EE54300A76A48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46DC45E4268EE54300A76A48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +57,10 @@
 			isa = PBXGroup;
 			children = (
 				46DC45EB268EE54300A76A48 /* TouristicPoints.xcdatamodeld */,
+				469073BA269C140F007B7411 /* Point+CoreDataClass.swift */,
+				469073BC269C2360007B7411 /* Point+CoreDataProperties.swift */,
+				469073BE269C57AE007B7411 /* Details+CoreDataClass.swift */,
+				469073C0269C57C1007B7411 /* Details+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,10 +171,14 @@
 			files = (
 				46DC45E7268EE54300A76A48 /* PointsViewController.swift in Sources */,
 				46DC45E3268EE54300A76A48 /* AppDelegate.swift in Sources */,
+				469073BB269C140F007B7411 /* Point+CoreDataClass.swift in Sources */,
 				46DC45E5268EE54300A76A48 /* SceneDelegate.swift in Sources */,
 				46551DD226930CD6009FBD2F /* PointCell.swift in Sources */,
 				46DC45FC268F03B700A76A48 /* DetailViewController.swift in Sources */,
 				46DC45FA268EE82A00A76A48 /* Points.swift in Sources */,
+				469073BD269C2360007B7411 /* Point+CoreDataProperties.swift in Sources */,
+				469073C1269C57C1007B7411 /* Details+CoreDataProperties.swift in Sources */,
+				469073BF269C57AE007B7411 /* Details+CoreDataClass.swift in Sources */,
 				46DC45ED268EE54300A76A48 /* TouristicPoints.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

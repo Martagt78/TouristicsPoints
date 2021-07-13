@@ -14,19 +14,14 @@ class PointsViewController: UITableViewController {
     
     var pointsArray = [Place]()
     
+    //SearchBar
     let searchController = UISearchController(searchResultsController: nil)
     var filteredpointsArray = [Place]() //array para guardar coincidencias de barra de busqueda
     
-    
+    //CoreData
     let fetchRequest = Point.basicFetchRequest()
-    //Para obtener los resultados de la fetchRequest
-    //    var point: FetchedResults<Point> {
-    //       // fetchRequest.wrappedValue
-    //
-    //    }
-    
     var point: NSFetchedResultsController<Point>?
-    
+    let delegate = UIApplication.shared.delegate as? AppDelegate
     
     
     override func viewDidLoad() {
@@ -44,18 +39,6 @@ class PointsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getPoint()
-        
-        //Coredata
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        let sort = NSSortDescriptor(key: #keyPath(Point.title), ascending: true)
-        fetchRequest.sortDescriptors = [sort]
-        do {
-            point = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: delegate.persistentContainer.viewContext
-                                               , sectionNameKeyPath: nil, cacheName: nil)
-            try point?.performFetch()
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
         
     }
     
@@ -123,11 +106,30 @@ class PointsViewController: UITableViewController {
         }
     }
     
-    
+    func refreshDataCore() {
+        let sort = NSSortDescriptor(key: #keyPath(Point.title), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        do {
+            if let appDelegate = delegate {
+                point = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: appDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+                try point?.performFetch()
+                if let pointArray = point?.fetchedObjects {
+                    for p in pointArray {
+                        let item = Place(id: p.id, title: p.title, geocoordinates: p.geocoordinates)
+                        pointsArray.append(item)
+                    }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
     
     func getPoint() {
-        
-        let urlPOI = URL(string: "http://t21services.herokuapp.com/points")!
+        let urlPOI = URL(string: "http://t21services.herokuapp.com/poidsf")!
         var request = URLRequest(url: urlPOI)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -135,11 +137,20 @@ class PointsViewController: UITableViewController {
             if let data = data {
                 if let points = try? JSONDecoder().decode(Places.self, from: data) {
                     self.pointsArray = points.list
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                    if let appDelegate = self.delegate {
+                        appDelegate.clearData()
+                        DispatchQueue.main.async {
+                            for pointElements in self.pointsArray {
+                                Point.createWith(id: pointElements.id, title: pointElements.title, geocoordinates: pointElements.geocoordinates, using: appDelegate.persistentContainer.viewContext)
+                                appDelegate.saveContext()
+                            }
+                            self.tableView.reloadData()
+                        }
                     }
                 } else {
                     print("Invalid Response")
+                    self.refreshDataCore()
+                    
                 }
             } else if let error = error {
                 print("HTTP Request Failed \(error)")

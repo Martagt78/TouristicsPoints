@@ -21,23 +21,26 @@ class DetailViewController: UIViewController {
     var detailPoints: DetailPoints?
     var pointID: String = ""
     
+    //CoreData
+    //Recuperamos los datos que tenemos guardados en fetchRequest
+    let fetchDetailRequest = Details.basicDetailFetchRequest()
     
-    let fetchRequest = Details.basicDetailFetchRequest()
     var detail: NSFetchedResultsController<Details>?
     
-    let delegate = UIApplication.shared.delegate as! AppDelegate
+    let delegate = UIApplication.shared.delegate as? AppDelegate
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getDetailPoint()
-    
+        
     }
     
     
@@ -52,19 +55,69 @@ class DetailViewController: UIViewController {
         
     }
     
+    
     func refreshDetailDataCore() {
         let sort = NSSortDescriptor(key: #keyPath(Details.titleDetails), ascending: true)
-        fetchRequest.sortDescriptors = [sort]
+        fetchDetailRequest.sortDescriptors = [sort]
+        fetchDetailRequest.predicate = NSPredicate(format: "idDetails = \(pointID)")
         do {
-            detail = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: delegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+            detail = NSFetchedResultsController(fetchRequest: fetchDetailRequest, managedObjectContext: MyPersistentContainer.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+            //Solicitamos la recuperación de los datos
             try detail?.performFetch()
+            if let place = self.detail?.fetchedObjects {
+                for i in place {
+                    DispatchQueue.main.async {
+                        let item = DetailPoints(id: i.idDetails, title: i.titleDetails, address: i.address, transport: i.transport, email: i.email, geocoordinates: i.geocoordinatesDetails, description: i.descriptionplace, phone: i.phone)
+                        self.configureOutlets(detailPoints: item)
+                        
+                    }
+                }
+            }
+            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     
-    func getDetailPoint() {
+    
+    func updateContext(detailPoints: DetailPoints) {
+        let sort = NSSortDescriptor(key: #keyPath(Details.titleDetails), ascending: true)
+        fetchDetailRequest.sortDescriptors = [sort]
+        fetchDetailRequest.predicate = NSPredicate(format: "idDetails = \(pointID)")
+        do {
+            detail = NSFetchedResultsController(fetchRequest: fetchDetailRequest, managedObjectContext: MyPersistentContainer.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+            //Solicitamos la recuperación de los datos
+            try detail?.performFetch()
+            if let place = self.detail?.fetchedObjects {
+                if place.count > 0 {
+                    let manageObject = place[0]
+                    manageObject.titleDetails = detailPoints.title
+                    manageObject.geocoordinatesDetails = detailPoints.geocoordinates
+                    manageObject.address = detailPoints.address
+                    manageObject.descriptionplace = detailPoints.description
+                    manageObject.email = detailPoints.email
+                    manageObject.transport = detailPoints.transport
+                    MyPersistentContainer.saveContext()
+                    
+                    
+                } else {
+                    Details.createWith(id: detailPoints.id, title: detailPoints.title, geocoordinates: detailPoints.geocoordinates, address: detailPoints.address, description: detailPoints.description, email: detailPoints.email, phone: detailPoints.phone, transport: detailPoints.transport, using: MyPersistentContainer.persistentContainer.viewContext)
+                    
+                }
+                DispatchQueue.main.async {
+                    self.configureOutlets(detailPoints: detailPoints)
+                }
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
         
+        
+    }
+    
+    
+    func getDetailPoint() {
         let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/points/\(self.pointID)")! //Pasar ID que queremos mostrar
         var request = URLRequest(url: urlDetailPOI)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -72,13 +125,7 @@ class DetailViewController: UIViewController {
         let task = URLSession.shared.dataTask(with: urlDetailPOI) { data, response, error in
             if let data = data {
                 if let dpoints = try? JSONDecoder().decode(DetailPoints.self, from: data) {
-                    DispatchQueue.main.async {
-                        Details.createWith(id: dpoints.id, title: dpoints.title, geocoordinates: dpoints.geocoordinates, address: dpoints.address, description: dpoints.description, email: dpoints.email, phone: dpoints.phone, transport: dpoints.transport, using:  self.delegate.persistentContainer.viewContext)
-                        self.configureOutlets(detailPoints: dpoints)
-                        self.delegate.saveContext()
-                        
-                    }
-                    
+                    self.updateContext(detailPoints: dpoints)
                 } else {
                     print("Invalid Response")
                     self.refreshDetailDataCore()

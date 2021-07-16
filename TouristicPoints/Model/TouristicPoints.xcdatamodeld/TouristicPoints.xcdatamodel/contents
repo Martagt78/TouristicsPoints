@@ -9,6 +9,11 @@
         <attribute name="phone" optional="YES" attributeType="String"/>
         <attribute name="titleDetails" attributeType="String"/>
         <attribute name="transport" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="idDetails"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Point" representedClassName="Point" syncable="YES">
         <attribute name="geocoordinates" attributeType="String"/>

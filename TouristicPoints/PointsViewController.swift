@@ -19,7 +19,9 @@ class PointsViewController: UITableViewController {
     var filteredpointsArray = [Place]() //array para guardar coincidencias de barra de busqueda
     
     //CoreData
+    //Recuperamos los datos que tenemos guardados en fetchRequest
     let fetchRequest = Point.basicFetchRequest()
+    
     var point: NSFetchedResultsController<Point>?
     let delegate = UIApplication.shared.delegate as? AppDelegate
     
@@ -103,6 +105,7 @@ class PointsViewController: UITableViewController {
                 return
             }
             detailViewController.pointID = pointID
+            
         }
     }
     
@@ -110,26 +113,29 @@ class PointsViewController: UITableViewController {
         let sort = NSSortDescriptor(key: #keyPath(Point.title), ascending: true)
         fetchRequest.sortDescriptors = [sort]
         do {
-            if let appDelegate = delegate {
-                point = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: appDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+                point = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: MyPersistentContainer.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+                //Solicitamos la recuperación de los datos
                 try point?.performFetch()
+                //ponemos esos datos en el array pointArray, y lo recorremos para ir creando cada item
                 if let pointArray = point?.fetchedObjects {
                     for p in pointArray {
                         let item = Place(id: p.id, title: p.title, geocoordinates: p.geocoordinates)
+                        //añadimos cada item creado a nuestro array inicial
                         pointsArray.append(item)
                     }
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
                 }
-            }
+            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     
+    
     func getPoint() {
-        let urlPOI = URL(string: "http://t21services.herokuapp.com/poidsf")!
+        let urlPOI = URL(string: "http://t21services.herokuapp.com/points")!
         var request = URLRequest(url: urlPOI)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -138,11 +144,11 @@ class PointsViewController: UITableViewController {
                 if let points = try? JSONDecoder().decode(Places.self, from: data) {
                     self.pointsArray = points.list
                     if let appDelegate = self.delegate {
-                        appDelegate.clearData()
+                        appDelegate.clearDataPoint()
                         DispatchQueue.main.async {
-                            for pointElements in self.pointsArray {
-                                Point.createWith(id: pointElements.id, title: pointElements.title, geocoordinates: pointElements.geocoordinates, using: appDelegate.persistentContainer.viewContext)
-                                appDelegate.saveContext()
+                            for i in self.pointsArray {
+                                Point.createWith(id: i.id, title: i.title, geocoordinates: i.geocoordinates, using: MyPersistentContainer.persistentContainer.viewContext)
+                                MyPersistentContainer.saveContext()
                             }
                             self.tableView.reloadData()
                         }

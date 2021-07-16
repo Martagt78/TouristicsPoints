@@ -12,11 +12,11 @@ import CoreData
 
 class PointsViewController: UITableViewController {
     
-    var pointsArray = [Place]()
+    var pointsArray = [PointViewModel]()
     
     //SearchBar
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredpointsArray = [Place]() //array para guardar coincidencias de barra de busqueda
+    var filteredpointsArray = [PointViewModel]() //array para guardar coincidencias de barra de busqueda
     
     //CoreData
     //Recuperamos los datos que tenemos guardados en fetchRequest
@@ -55,7 +55,7 @@ class PointsViewController: UITableViewController {
     }
     
     func filterContentForSearchText(_ searchText: String) {
-        filteredpointsArray = pointsArray.filter {(point: Place) -> Bool in
+        filteredpointsArray = pointsArray.filter {(point: PointViewModel) -> Bool in
             //Al usar lowercased comparo tanto minusculas como mayúsculas, no es necesario escribir la palabra tal y como aparece
             return point.title.lowercased().contains(searchText.lowercased())
         }
@@ -119,7 +119,7 @@ class PointsViewController: UITableViewController {
                 //ponemos esos datos en el array pointArray, y lo recorremos para ir creando cada item
                 if let pointArray = point?.fetchedObjects {
                     for p in pointArray {
-                        let item = Place(id: p.id, title: p.title, geocoordinates: p.geocoordinates)
+                        let item = PointViewModel(id: p.id, title: p.title, geocoordinates: p.geocoordinates)
                         //añadimos cada item creado a nuestro array inicial
                         pointsArray.append(item)
                     }
@@ -141,7 +141,7 @@ class PointsViewController: UITableViewController {
         
         let task = URLSession.shared.dataTask(with: urlPOI) { data, response, error in
             if let data = data {
-                if let points = try? JSONDecoder().decode(Places.self, from: data) {
+                if let points = try? JSONDecoder().decode(PointsViewModel.self, from: data) {
                     self.pointsArray = points.list
                     if let appDelegate = self.delegate {
                         appDelegate.clearDataPoint()

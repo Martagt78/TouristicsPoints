@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var phoneLabel: UILabel!
     @IBOutlet var descriptionText: UITextView!
     
-    var detailPoints: DetailPoints?
+    var detailPoints: PointDetailViewModel?
     var pointID: String = ""
     
     //CoreData
@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
     }
     
     
-    func configureOutlets(detailPoints: DetailPoints ) {
+    func configureOutlets(detailPoints: PointDetailViewModel ) {
         titleLabel.text = detailPoints.title
         addressLabel.text = "\(detailPoints.address)"
         transportLabel.text = detailPoints.transport
@@ -67,7 +67,7 @@ class DetailViewController: UIViewController {
             if let place = self.detail?.fetchedObjects {
                 for i in place {
                     DispatchQueue.main.async {
-                        let item = DetailPoints(id: i.idDetails, title: i.titleDetails, address: i.address, transport: i.transport, email: i.email, geocoordinates: i.geocoordinatesDetails, description: i.descriptionplace, phone: i.phone)
+                        let item = PointDetailViewModel(id: i.idDetails, title: i.titleDetails, address: i.address, transport: i.transport, email: i.email, geocoordinates: i.geocoordinatesDetails, description: i.descriptionplace, phone: i.phone)
                         self.configureOutlets(detailPoints: item)
                         
                     }
@@ -80,7 +80,7 @@ class DetailViewController: UIViewController {
     }
     
     
-    func updateContext(detailPoints: DetailPoints) {
+    func updateContext(detailPoints: PointDetailViewModel) {
         let sort = NSSortDescriptor(key: #keyPath(Details.titleDetails), ascending: true)
         fetchDetailRequest.sortDescriptors = [sort]
         fetchDetailRequest.predicate = NSPredicate(format: "idDetails = \(pointID)")
@@ -118,13 +118,13 @@ class DetailViewController: UIViewController {
     
     
     func getDetailPoint() {
-        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/points/\(self.pointID)")! //Pasar ID que queremos mostrar
+        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/oints/\(self.pointID)")! //Pasar ID que queremos mostrar
         var request = URLRequest(url: urlDetailPOI)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: urlDetailPOI) { data, response, error in
             if let data = data {
-                if let dpoints = try? JSONDecoder().decode(DetailPoints.self, from: data) {
+                if let dpoints = try? JSONDecoder().decode(PointDetailViewModel.self, from: data) {
                     self.updateContext(detailPoints: dpoints)
                 } else {
                     print("Invalid Response")

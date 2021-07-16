@@ -20,7 +20,7 @@
 		46DC45ED268EE54300A76A48 /* TouristicPoints.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45EB268EE54300A76A48 /* TouristicPoints.xcdatamodeld */; };
 		46DC45EF268EE54400A76A48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46DC45EE268EE54400A76A48 /* Assets.xcassets */; };
 		46DC45F2268EE54400A76A48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46DC45F0268EE54400A76A48 /* LaunchScreen.storyboard */; };
-		46DC45FA268EE82A00A76A48 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45F9268EE82A00A76A48 /* Points.swift */; };
+		46DC45FA268EE82A00A76A48 /* PointsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45F9268EE82A00A76A48 /* PointsViewModel.swift */; };
 		46DC45FC268F03B700A76A48 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45FB268F03B700A76A48 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +40,7 @@
 		46DC45EE268EE54400A76A48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46DC45F1268EE54400A76A48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		46DC45F3268EE54400A76A48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46DC45F9268EE82A00A76A48 /* Points.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
+		46DC45F9268EE82A00A76A48 /* PointsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsViewModel.swift; sourceTree = "<group>"; };
 		46DC45FB268F03B700A76A48 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +89,7 @@
 				466E18BF26987DE900957F82 /* Model */,
 				46DC45E2268EE54300A76A48 /* AppDelegate.swift */,
 				46DC45E4268EE54300A76A48 /* SceneDelegate.swift */,
-				46DC45F9268EE82A00A76A48 /* Points.swift */,
+				46DC45F9268EE82A00A76A48 /* PointsViewModel.swift */,
 				46DC45E6268EE54300A76A48 /* PointsViewController.swift */,
 				46DC45FB268F03B700A76A48 /* DetailViewController.swift */,
 				46551DD126930CD6009FBD2F /* PointCell.swift */,
@@ -179,7 +179,7 @@
 				46DC45E5268EE54300A76A48 /* SceneDelegate.swift in Sources */,
 				46551DD226930CD6009FBD2F /* PointCell.swift in Sources */,
 				46DC45FC268F03B700A76A48 /* DetailViewController.swift in Sources */,
-				46DC45FA268EE82A00A76A48 /* Points.swift in Sources */,
+				46DC45FA268EE82A00A76A48 /* PointsViewModel.swift in Sources */,
 				469073BD269C2360007B7411 /* Point+CoreDataProperties.swift in Sources */,
 				469073C1269C57C1007B7411 /* Details+CoreDataProperties.swift in Sources */,
 				469073BF269C57AE007B7411 /* Details+CoreDataClass.swift in Sources */,

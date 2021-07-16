@@ -118,7 +118,7 @@ class DetailViewController: UIViewController {
     
     
     func getDetailPoint() {
-        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/oints/\(self.pointID)")! //Pasar ID que queremos mostrar
+        let urlDetailPOI = URL(string: "http://t21services.herokuapp.com/points/\(self.pointID)")! //Pasar ID que queremos mostrar
         var request = URLRequest(url: urlDetailPOI)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         

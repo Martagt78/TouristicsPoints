@@ -30,9 +30,12 @@ class DetailViewController: UIViewController {
     let delegate = UIApplication.shared.delegate as? AppDelegate
     
     
+    var activityDetailIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        shoWActivityDetailIndicator()
         
     }
     
@@ -53,6 +56,16 @@ class DetailViewController: UIViewController {
         phoneLabel.text = detailPoints.phone
         descriptionText.text = detailPoints.description
         
+    }
+    
+    
+    func shoWActivityDetailIndicator() {
+        //Spinner
+        activityDetailIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityDetailIndicator)
+        activityDetailIndicator.startAnimating()
+        activityDetailIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityDetailIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     
@@ -105,6 +118,7 @@ class DetailViewController: UIViewController {
                     
                 }
                 DispatchQueue.main.async {
+                    self.activityDetailIndicator.isHidden = true
                     self.configureOutlets(detailPoints: detailPoints)
                 }
             }

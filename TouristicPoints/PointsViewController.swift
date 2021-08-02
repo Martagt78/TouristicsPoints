@@ -25,23 +25,28 @@ class PointsViewController: UITableViewController {
     var point: NSFetchedResultsController<Point>?
     let delegate = UIApplication.shared.delegate as? AppDelegate
     
+    //Creamos inciador de actividad
+    var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //SearchBar
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Place"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
+
+        shoWActivityIndicator()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getPoint()
-        
+
     }
     
     //Devuelve true si el texto escrito en la barra está vacio
@@ -63,6 +68,15 @@ class PointsViewController: UITableViewController {
         
     }
     
+    
+    func shoWActivityIndicator() {
+        //Spinner
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
     
     //MARK: - DataSource -
     
@@ -124,6 +138,7 @@ class PointsViewController: UITableViewController {
                         pointsArray.append(item)
                     }
                     DispatchQueue.main.async {
+                        self.activityIndicator.isHidden = true
                         self.tableView.reloadData()
                     }
                 }
@@ -146,9 +161,11 @@ class PointsViewController: UITableViewController {
                     if let appDelegate = self.delegate {
                         appDelegate.clearDataPoint()
                         DispatchQueue.main.async {
+                            self.activityIndicator.isHidden = true
                             for i in self.pointsArray {
                                 Point.createWith(id: i.id, title: i.title, geocoordinates: i.geocoordinates, using: MyPersistentContainer.persistentContainer.viewContext)
                                 MyPersistentContainer.saveContext()
+                                
                             }
                             self.tableView.reloadData()
                         }
@@ -162,7 +179,9 @@ class PointsViewController: UITableViewController {
                 print("HTTP Request Failed \(error)")
             }
         }
+       
         task.resume()
+       
         
     }
     

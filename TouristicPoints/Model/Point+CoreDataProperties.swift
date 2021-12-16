@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Foundation
 
 extension Point {
     @NSManaged var id: String

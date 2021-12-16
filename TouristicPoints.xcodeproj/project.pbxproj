@@ -9,10 +9,19 @@
 /* Begin PBXBuildFile section */
 		46366D28269EF52E004F7919 /* MyPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46366D27269EF52E004F7919 /* MyPersistentContainer.swift */; };
 		46551DD226930CD6009FBD2F /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46551DD126930CD6009FBD2F /* PointCell.swift */; };
+		466E43EA26C6677700B41C48 /* PointsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466E43E926C6677700B41C48 /* PointsBuilder.swift */; };
+		466E43EC26C6678500B41C48 /* DetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466E43EB26C6678500B41C48 /* DetailsBuilder.swift */; };
+		468C1ED226C25A8B00EBB906 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468C1ED126C25A8B00EBB906 /* DetailsViewModel.swift */; };
 		469073BB269C140F007B7411 /* Point+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469073BA269C140F007B7411 /* Point+CoreDataClass.swift */; };
 		469073BD269C2360007B7411 /* Point+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469073BC269C2360007B7411 /* Point+CoreDataProperties.swift */; };
 		469073BF269C57AE007B7411 /* Details+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469073BE269C57AE007B7411 /* Details+CoreDataClass.swift */; };
 		469073C1269C57C1007B7411 /* Details+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469073C0269C57C1007B7411 /* Details+CoreDataProperties.swift */; };
+		46C2C3E426BD3A27003F9FCC /* PointsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2C3E326BD3A27003F9FCC /* PointsPresenter.swift */; };
+		46C2C3E626BD3A36003F9FCC /* PointsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2C3E526BD3A36003F9FCC /* PointsInteractor.swift */; };
+		46C2C3E826BD3A3E003F9FCC /* PointsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2C3E726BD3A3E003F9FCC /* PointsRouter.swift */; };
+		46C30FBA26C126AB00CE9F55 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C30FB926C126AB00CE9F55 /* DetailPresenter.swift */; };
+		46C30FBD26C126C600CE9F55 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C30FBC26C126C600CE9F55 /* DetailRouter.swift */; };
+		46C30FBF26C126D500CE9F55 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C30FBE26C126D500CE9F55 /* DetailInteractor.swift */; };
 		46DC45E3268EE54300A76A48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E2268EE54300A76A48 /* AppDelegate.swift */; };
 		46DC45E5268EE54300A76A48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E4268EE54300A76A48 /* SceneDelegate.swift */; };
 		46DC45E7268EE54300A76A48 /* PointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC45E6268EE54300A76A48 /* PointsViewController.swift */; };
@@ -27,10 +36,19 @@
 /* Begin PBXFileReference section */
 		46366D27269EF52E004F7919 /* MyPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPersistentContainer.swift; sourceTree = "<group>"; };
 		46551DD126930CD6009FBD2F /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
+		466E43E926C6677700B41C48 /* PointsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBuilder.swift; sourceTree = "<group>"; };
+		466E43EB26C6678500B41C48 /* DetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBuilder.swift; sourceTree = "<group>"; };
+		468C1ED126C25A8B00EBB906 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		469073BA269C140F007B7411 /* Point+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataClass.swift"; sourceTree = "<group>"; };
 		469073BC269C2360007B7411 /* Point+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Point+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		469073BE269C57AE007B7411 /* Details+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Details+CoreDataClass.swift"; sourceTree = "<group>"; };
 		469073C0269C57C1007B7411 /* Details+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Details+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		46C2C3E326BD3A27003F9FCC /* PointsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsPresenter.swift; sourceTree = "<group>"; };
+		46C2C3E526BD3A36003F9FCC /* PointsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsInteractor.swift; sourceTree = "<group>"; };
+		46C2C3E726BD3A3E003F9FCC /* PointsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsRouter.swift; sourceTree = "<group>"; };
+		46C30FB926C126AB00CE9F55 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		46C30FBC26C126C600CE9F55 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		46C30FBE26C126D500CE9F55 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		46DC45DF268EE54300A76A48 /* TouristicPoints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristicPoints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DC45E2268EE54300A76A48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46DC45E4268EE54300A76A48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +85,32 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		46C2C3E226BD39CD003F9FCC /* PointsModule  */ = {
+			isa = PBXGroup;
+			children = (
+				466E43E926C6677700B41C48 /* PointsBuilder.swift */,
+				46DC45F9268EE82A00A76A48 /* PointsViewModel.swift */,
+				46DC45E6268EE54300A76A48 /* PointsViewController.swift */,
+				46C2C3E326BD3A27003F9FCC /* PointsPresenter.swift */,
+				46C2C3E526BD3A36003F9FCC /* PointsInteractor.swift */,
+				46C2C3E726BD3A3E003F9FCC /* PointsRouter.swift */,
+			);
+			path = "PointsModule ";
+			sourceTree = "<group>";
+		};
+		46C30FB226C1256D00CE9F55 /* DetailsPointModule  */ = {
+			isa = PBXGroup;
+			children = (
+				466E43EB26C6678500B41C48 /* DetailsBuilder.swift */,
+				468C1ED126C25A8B00EBB906 /* DetailsViewModel.swift */,
+				46DC45FB268F03B700A76A48 /* DetailViewController.swift */,
+				46C30FB926C126AB00CE9F55 /* DetailPresenter.swift */,
+				46C30FBE26C126D500CE9F55 /* DetailInteractor.swift */,
+				46C30FBC26C126C600CE9F55 /* DetailRouter.swift */,
+			);
+			path = "DetailsPointModule ";
+			sourceTree = "<group>";
+		};
 		46DC45D6268EE54300A76A48 = {
 			isa = PBXGroup;
 			children = (
@@ -86,12 +130,11 @@
 		46DC45E1268EE54300A76A48 /* TouristicPoints */ = {
 			isa = PBXGroup;
 			children = (
+				46C2C3E226BD39CD003F9FCC /* PointsModule  */,
+				46C30FB226C1256D00CE9F55 /* DetailsPointModule  */,
 				466E18BF26987DE900957F82 /* Model */,
 				46DC45E2268EE54300A76A48 /* AppDelegate.swift */,
 				46DC45E4268EE54300A76A48 /* SceneDelegate.swift */,
-				46DC45F9268EE82A00A76A48 /* PointsViewModel.swift */,
-				46DC45E6268EE54300A76A48 /* PointsViewController.swift */,
-				46DC45FB268F03B700A76A48 /* DetailViewController.swift */,
 				46551DD126930CD6009FBD2F /* PointCell.swift */,
 				46366D27269EF52E004F7919 /* MyPersistentContainer.swift */,
 				46DC45E8268EE54300A76A48 /* Main.storyboard */,
@@ -172,18 +215,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46C2C3E426BD3A27003F9FCC /* PointsPresenter.swift in Sources */,
+				468C1ED226C25A8B00EBB906 /* DetailsViewModel.swift in Sources */,
 				46366D28269EF52E004F7919 /* MyPersistentContainer.swift in Sources */,
 				46DC45E7268EE54300A76A48 /* PointsViewController.swift in Sources */,
+				466E43EC26C6678500B41C48 /* DetailsBuilder.swift in Sources */,
+				46C30FBF26C126D500CE9F55 /* DetailInteractor.swift in Sources */,
+				46C2C3E626BD3A36003F9FCC /* PointsInteractor.swift in Sources */,
 				46DC45E3268EE54300A76A48 /* AppDelegate.swift in Sources */,
 				469073BB269C140F007B7411 /* Point+CoreDataClass.swift in Sources */,
 				46DC45E5268EE54300A76A48 /* SceneDelegate.swift in Sources */,
 				46551DD226930CD6009FBD2F /* PointCell.swift in Sources */,
+				466E43EA26C6677700B41C48 /* PointsBuilder.swift in Sources */,
 				46DC45FC268F03B700A76A48 /* DetailViewController.swift in Sources */,
 				46DC45FA268EE82A00A76A48 /* PointsViewModel.swift in Sources */,
 				469073BD269C2360007B7411 /* Point+CoreDataProperties.swift in Sources */,
+				46C30FBA26C126AB00CE9F55 /* DetailPresenter.swift in Sources */,
 				469073C1269C57C1007B7411 /* Details+CoreDataProperties.swift in Sources */,
 				469073BF269C57AE007B7411 /* Details+CoreDataClass.swift in Sources */,
+				46C30FBD26C126C600CE9F55 /* DetailRouter.swift in Sources */,
 				46DC45ED268EE54300A76A48 /* TouristicPoints.xcdatamodeld in Sources */,
+				46C2C3E826BD3A3E003F9FCC /* PointsRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
